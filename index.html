@@ -19,6 +19,8 @@
     <script src="script2.js" type="text/javascript"></script>
     <script src="script3.js" type="text/javascript"></script>
     <script src="script4.js" type="text/javascript"></script>
+    <script src="script5.js" type="text/javascript"></script>
+    <script src="script6.js" type="text/javascript"></script>
     <h1>Bases JS</h1>
     <h2>Tuto présentant les bases de javascript</h2>
     <ul>
@@ -28,6 +30,19 @@
         <li>Mettre un point d'arret à la ligne 10</li>
         <li>Quand c'est terminé recommencer avec le fichier script2.js -> script4.js</li>
     </ul>
+	
+    <input id="champSaisie" type="text" placeholder="Taper un truc ici" />
+    <button onclick="appuiSurBouton()">Valider</button>
+    <h3>Ma liste dynamique</h3>
+    <div class="listeTrucs"></div>
+    </div>
+
+    <h3>Envoyer une requête synchrone (voir résultat dans console)</h3>
+    <button onclick="sendSynchronousRequest()">Envoyer</button>
+
+    <h3>Envoyer une requête asynchrone (voir résultat dans console)</h3>
+    <button onclick="sendAsynchronousRequest()">Envoyer</button>
+
 </body>
 
 </html>
