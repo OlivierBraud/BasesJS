@@ -9,7 +9,7 @@
 // l'évenement HTML onclick est lancé, et le navigateur exécute le bloc de code JS qui est indiqué dans "onclick".
 // Dans notre exemple, il s'agit de la fonction suivante:
 
-function appuiSurBouton() {
+function updateDOM() {
     // JS peut récupérer un élément du HTML (aussi appelé le DOM)
     // pour cela, on utilise l'objet global "document" fourni par le navigateur
     // "document" permet de récupérer n'importe quel élément à l'aide de son attribut "id", 
@@ -37,19 +37,43 @@ function appuiSurBouton() {
         var mesDivs = document.getElementsByClassName("listeTrucs");
         var maDiv = mesDivs[0];
 
-        // Ajout de l'élément "p" créé précédement dans le HTML, en tant que dernier enfant de la div
-        maDiv.appendChild(monElementDeListe);
-
         // On change la couleur de fond de la div en fonction du nombre d'élement qui la contienne
-        // % 2 => Modulo 2
+        // % 2 => Modulo 2 
         var childCount = maDiv.childElementCount % 2;
         if (childCount === 1) {
             // setAttribute permet de changer la valeur d'un attribut html
             // <div style="background-color: red;"></div>
-            maDiv.setAttribute("style", "background-color: coral;");
+            monElementDeListe.setAttribute("style", "background-color: coral;");
         } else {
-            maDiv.setAttribute("style", "background-color: teal;");
+            monElementDeListe.setAttribute("style", "background-color: teal;");
         }
+
+        // Ajout de l'élément "p" créé précédement dans le HTML, en tant que dernier enfant de la div
+        maDiv.appendChild(monElementDeListe);
+
+    }
+}
+
+// La même chose, avec JQuery (plus court, mais pas des masses)
+function updateDOMJQuery(){
+    // Récupération de la valeur du champ par id "#"
+    var valeurDuChamp = $("#champSaisie").val();
+
+    if (valeurDuChamp !== undefined && valeurDuChamp !== null && valeurDuChamp.length > 0) {
+
+        var childCount = $(".listeTrucs").children().length % 2;
+        var paragraphe = $("<p></p>")
+            .text(valeurDuChamp)
+            .css("background-color", function(){
+                if(childCount === 1){
+                    return "coral";
+                } else{
+                    return "teal";
+                }
+        });
+
+        // recupération de la liste par classe "."
+        $(".listeTrucs").append(paragraphe);
     }
 }
 

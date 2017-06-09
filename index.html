@@ -6,15 +6,14 @@
 </head>
 
 <body>
-    <!-- Définition d'un script à l'intérieur de la page même -->
-    <!-- A éviter car pas facile à maintenir quand le fichier HTML devient très gros -->
-    <script>
-        var variableScriptHtml = "Variable définie directement dans le fichier HTML."
-        console.log(variableScriptHtml);
-    </script>
-    <!-- Import d'un script dans un fichier séparé -->
     <!-- Attention, l'ordre d'import des script dans la page HTML est important 
-    (on verra ça en détail plus tard -->
+    Par exemple, il faut importer les librairies avant les scripts qui l'utilisent
+    sinon le script va planter -->
+
+    <!-- Récupération de la librairie JQuery depuis le site (il vaut mieux en télécharger une copie dans le projet) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+
+    <!-- Import d'un script dans un fichier séparé -->
     <script src="script.js" type="text/javascript"></script>
     <script src="script2.js" type="text/javascript"></script>
     <script src="script3.js" type="text/javascript"></script>
@@ -22,6 +21,14 @@
     <script src="script5.js" type="text/javascript"></script>
     <script src="script6.js" type="text/javascript"></script>
     <script src="script7.js" type="text/javascript"></script>
+
+    <!-- Définition d'un script à l'intérieur de la page même -->
+    <!-- A éviter car pas facile à maintenir quand le fichier HTML devient très gros -->
+    <script>
+        var variableScriptHtml = "Variable définie directement dans le fichier HTML."
+        console.log(variableScriptHtml);
+    </script>
+
     <h1>Bases JS</h1>
     <h2>Tuto présentant les bases de javascript</h2>
     <ul>
@@ -33,7 +40,8 @@
     </ul>
 	
     <input id="champSaisie" type="text" placeholder="Taper un truc ici" />
-    <button onclick="appuiSurBouton()">Valider</button>
+    <button onclick="updateDOM()">Ajouter à la liste (en JS pur)</button>
+    <button onclick="updateDOMJQuery()">Ajouter à la liste (avec JQuery)</button>
     <h3>Ma liste dynamique</h3>
     <div class="listeTrucs"></div>
     </div>
